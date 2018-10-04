@@ -1,0 +1,31 @@
+{
+    "name": "wakeapp/enumer-bundle",
+    "description": "Provides possibility for enum component",
+    "type": "symfony-bundle",
+    "keywords": ["symfony-bundle", "enumer", "enum"],
+    "license": "proprietary",
+
+    "require": {
+        "php": "~7.1",
+        "symfony/config": "~3.0||~4.0",
+        "symfony/dependency-injection": "~3.0||~4.0",
+        "symfony/http-kernel": "~3.0||~4.0",
+        "wakeapp/enumer": "^0.1"
+    },
+    "repositories" : [
+        {
+            "type" : "vcs",
+            "url" : "git@github.com:wakeapp/enumer.git"
+        }
+    ],
+
+    "suggest": {
+        "symfony/symfony": "Allows more advanced functionality with Symfony"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Wakeapp\\Bundle\\EnumerBundle\\": ""
+        }
+    }
+}
