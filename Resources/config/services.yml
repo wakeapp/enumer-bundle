@@ -1,6 +1,6 @@
 services:
     wakeapp_enumer.enumer:
         class: Wakeapp\Component\Enumer\Enumer
-        factory: [Wakeapp\EnumerBundle\Factory\EnumerFactory, 'create']
+        factory: [Wakeapp\Bundle\EnumerBundle\Factory\EnumerFactory, 'create']
         arguments:
             - '%wakeapp_enumer.enum%'

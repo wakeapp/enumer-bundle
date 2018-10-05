@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Wakeapp\EnumerBundle\Factory;
+namespace Wakeapp\Bundle\EnumerBundle\Factory;
 
 use ReflectionException;
 use Wakeapp\Component\Enumer\Enumer;
