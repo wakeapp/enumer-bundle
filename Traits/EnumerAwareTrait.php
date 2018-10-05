@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Wakeapp\EnumerBundle\Traits;
+namespace Wakeapp\Bundle\EnumerBundle\Traits;
 
 use Wakeapp\Component\Enumer\Enumer;
 
