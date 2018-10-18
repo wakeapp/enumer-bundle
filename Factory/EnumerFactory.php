@@ -19,7 +19,7 @@ class EnumerFactory
      * @return Enumer
      * @throws ReflectionException
      */
-    public function create(array $enumClassList)
+    public static function create(array $enumClassList): Enumer
     {
         $registry = new EnumRegistry();
 
