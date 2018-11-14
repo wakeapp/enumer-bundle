@@ -1,5 +1,5 @@
 Enumer Bundle
-=================
+=============
 
 Введение
 --------
@@ -58,3 +58,8 @@ wakeapp_enumer:
     enum_class:
         - WakeCent\BaseCommonBundle\Enum\CampaignStateEnum
 ```
+
+Лицензия
+--------
+
+[![license](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](./LICENSE)

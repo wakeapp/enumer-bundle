@@ -8,15 +8,13 @@ use ReflectionException;
 use Wakeapp\Component\Enumer\Enumer;
 use Wakeapp\Component\Enumer\EnumRegistry;
 
-/**
- * Class EnumerFactory
- */
 class EnumerFactory
 {
     /**
      * @param array $enumClassList
      *
      * @return Enumer
+     *
      * @throws ReflectionException
      */
     public static function create(array $enumClassList): Enumer

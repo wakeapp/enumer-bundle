@@ -6,9 +6,6 @@ namespace Wakeapp\Bundle\EnumerBundle\Traits;
 
 use Wakeapp\Component\Enumer\Enumer;
 
-/**
- * Trait EnumerAwareTrait
- */
 trait EnumerAwareTrait
 {
     /**

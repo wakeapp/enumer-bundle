@@ -9,19 +9,8 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-/**
- * Class WakeappEnumerExtension
- */
 class WakeappEnumerExtension extends Extension
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function getAlias()
-    {
-        return 'wakeapp_enumer';
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -36,4 +25,3 @@ class WakeappEnumerExtension extends Extension
         $loader->load('services.yml');
     }
 }
-
