@@ -1,6 +1,7 @@
 ## [1.0.0] - 2018-11-16
 ## Added
 - Added `EnumRegistryService` and appropriated service `wakeapp_enumer.enum_registry`.
+- Added `LICENSE` file and information about license in every file.
 ### Changed
 - Enum building executed at the container compiling instead runtime.
 - Removed redundant class comments.
