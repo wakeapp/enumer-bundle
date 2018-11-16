@@ -3,21 +3,16 @@
     "description": "Provides possibility for enum component",
     "type": "symfony-bundle",
     "keywords": ["symfony-bundle", "enumer", "enum"],
-    "license": "proprietary",
+    "license": "MIT",
 
     "require": {
-        "php": "~7.1",
-        "symfony/config": "~3.0||~4.0",
-        "symfony/dependency-injection": "~3.0||~4.0",
-        "symfony/http-kernel": "~3.0||~4.0",
-        "wakeapp/enumer": "^0.1"
+        "php":                          "~7.1",
+        "symfony/config":               "~3.4||~4.0",
+        "symfony/dependency-injection": "~3.4||~4.0",
+        "symfony/finder":               "~3.4||~4.0",
+        "symfony/http-kernel":          "~3.4||~4.0",
+        "wakeapp/enumer":               "^1.0"
     },
-    "repositories" : [
-        {
-            "type" : "vcs",
-            "url" : "git@github.com:wakeapp/enumer.git"
-        }
-    ],
 
     "suggest": {
         "symfony/symfony": "Allows more advanced functionality with Symfony"

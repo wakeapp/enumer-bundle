@@ -1,0 +1,8 @@
+services:
+    Wakeapp\Bundle\EnumerBundle\Registry\EnumRegistryService:
+        public: true
+        arguments:
+            - []
+    wakeapp_enumer.enum_registry:
+        public: true
+        alias: Wakeapp\Bundle\EnumerBundle\Registry\EnumRegistryService
