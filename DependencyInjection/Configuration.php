@@ -19,10 +19,12 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->arrayNode('enum_class')
-                    ->prototype('scalar')
+                ->arrayNode('source_directories')
+                    ->defaultValue(['src'])
+                    ->prototype('scalar')->end()
                 ->end()
-            ->end();
+            ->end()
+        ;
 
         return $treeBuilder;
     }

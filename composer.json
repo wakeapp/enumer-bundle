@@ -6,11 +6,12 @@
     "license": "MIT",
 
     "require": {
-        "php": "~7.1",
-        "symfony/config": "~3.0||~4.0",
-        "symfony/dependency-injection": "~3.0||~4.0",
-        "symfony/http-kernel": "~3.0||~4.0",
-        "wakeapp/enumer": "^0.1"
+        "php":                          "~7.1",
+        "symfony/config":               "~3.4||~4.0",
+        "symfony/dependency-injection": "~3.4||~4.0",
+        "symfony/finder":               "~3.4||~4.0",
+        "symfony/http-kernel":          "~3.4||~4.0",
+        "wakeapp/enumer":               "^1.0"
     },
 
     "suggest": {

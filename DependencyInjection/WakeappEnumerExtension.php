@@ -11,6 +11,8 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class WakeappEnumerExtension extends Extension
 {
+    public const PARAMETER_SOURCES = 'wakeapp_enumer.source_directories';
+
     /**
      * {@inheritdoc}
      */
@@ -19,9 +21,9 @@ class WakeappEnumerExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->setParameter('wakeapp_enumer.enum', $config['enum_class'] ?? []);
+        $container->setParameter(self::PARAMETER_SOURCES, $config['source_directories'] ?? []);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
-        $loader->load('services.yml');
+        $loader->load('services.yaml');
     }
 }
