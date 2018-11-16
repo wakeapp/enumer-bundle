@@ -16,7 +16,6 @@ namespace Wakeapp\Bundle\EnumerBundle\DependencyInjection\Compiler;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Finder\Finder;
-use Throwable;
 use Wakeapp\Bundle\EnumerBundle\DependencyInjection\WakeappEnumerExtension;
 use Wakeapp\Bundle\EnumerBundle\Enum\EnumInterface;
 use Wakeapp\Bundle\EnumerBundle\Registry\EnumRegistryService;
@@ -37,11 +36,7 @@ class EnumRegistryCompilerPass implements CompilerPassInterface
         $finder = $this->getFinder($container);
 
         foreach ($finder as $splFileInfo) {
-            try {
-                include_once($splFileInfo->getPathname());
-            } catch (Throwable $e) {
-                continue;
-            }
+            include_once($splFileInfo->getPathname());
         }
 
         $enumList = [];
@@ -50,22 +45,20 @@ class EnumRegistryCompilerPass implements CompilerPassInterface
         $declaredClassList = get_declared_classes();
 
         foreach ($declaredClassList as $className) {
-            try {
-                if (is_subclass_of($className, EnumInterface::class)) {
-                    $enumRegistry->addEnum($className);
-
-                    $enumList[$className] = [
-                        EnumRegistry::TYPE_ORIGINAL => $enumRegistry->getEnum($className, EnumRegistry::TYPE_ORIGINAL),
-                        EnumRegistry::TYPE_COMBINE => $enumRegistry->getEnum($className, EnumRegistry::TYPE_COMBINE),
-                        EnumRegistry::TYPE_COMBINE_NORMALIZE => $enumRegistry->getEnum(
-                            $className,
-                            EnumRegistry::TYPE_COMBINE_NORMALIZE
-                        ),
-                    ];
-                }
-            } catch (Throwable $e) {
+            if (!is_subclass_of($className, EnumInterface::class)) {
                 continue;
             }
+
+            $enumRegistry->addEnum($className);
+
+            $enumList[$className] = [
+                EnumRegistry::TYPE_ORIGINAL => $enumRegistry->getEnum($className, EnumRegistry::TYPE_ORIGINAL),
+                EnumRegistry::TYPE_COMBINE => $enumRegistry->getEnum($className, EnumRegistry::TYPE_COMBINE),
+                EnumRegistry::TYPE_COMBINE_NORMALIZE => $enumRegistry->getEnum(
+                    $className,
+                    EnumRegistry::TYPE_COMBINE_NORMALIZE
+                ),
+            ];
         }
 
         $container
