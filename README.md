@@ -1,6 +1,9 @@
 Enumer Bundle
 =============
 
+[![Latest Stable Version](https://poser.pugx.org/wakeapp/enumer-bundle/v/stable)](https://packagist.org/packages/wakeapp/enumer-bundle)
+[![Total Downloads](https://poser.pugx.org/wakeapp/enumer-bundle/downloads)](https://packagist.org/packages/wakeapp/enumer-bundle)
+
 Введение
 --------
 
@@ -56,9 +59,9 @@ class AppKernel extends Kernel
 Чтобы начать использовать бандл предварительная конфигурация **не** требуется и имеет следующее значение по умолчанию:
 
 ```yaml
-# app/config.yml
 wakeapp_enumer:
-    source_directories: # список директорий, в которых будет происходить поиск классов, реализующий EnumInterface
+    # список директорий, в которых будет происходить поиск классов, реализующий EnumInterface
+    source_directories:
         - 'src'
 ``` 
 
@@ -86,7 +89,7 @@ class GenderEnum implements EnumInterface
 `wakeapp_enumer.enum_registry` (также сервис доступен при вызове посредством `autowire`). 
 
 ```php
-<?php
+<?php declare(strict_types=1);
 
 namespace Example;
 
@@ -96,10 +99,17 @@ use Symfony\Component\DependencyInjection\Container;
 /** @var Container $container */
 $enumerRegistry = $container->get('wakeapp_enumer.enum_registry');
 
-$list = $enumerRegistry->getOriginalList(GenderEnum::class); // {"MALE":"Male","FEMALE":"Female"}
-$listCombine = $enumerRegistry->getCombinedList(GenderEnum::class); // {"Male":"Male","Female":"Female"}
-$listCombine = $enumerRegistry->getNormalizedList(GenderEnum::class); // {"male":"Male","female":"Female"}
-$originalValue = $enumerRegistry->getOriginalValue(GenderEnum::class, 'FemALE'); // 'Female'
+$list = $enumerRegistry->getOriginalList(GenderEnum::class); 
+echo json_encode($list);// {"MALE":"Male","FEMALE":"Female"}
+
+$listCombine = $enumerRegistry->getCombinedList(GenderEnum::class); 
+echo json_encode($listCombine); // {"Male":"Male","Female":"Female"}
+
+$normalizedList = $enumerRegistry->getNormalizedList(GenderEnum::class); 
+echo json_encode($normalizedList); // {"male":"Male","female":"Female"}
+
+$originalValue = $enumerRegistry->getOriginalValue(GenderEnum::class, 'FemALE'); 
+echo $originalValue; // 'Female'
 ```
 
 Лицензия
