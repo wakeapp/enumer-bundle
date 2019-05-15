@@ -31,7 +31,7 @@ Enumer Bundle
 После включите бандл добавив его в список зарегистрированных бандлов в `app/AppKernel.php` файл вашего проекта:
 
 ```php
-<?php
+<?php declare(strict_types=1);
 // app/AppKernel.php
 
 class AppKernel extends Kernel
@@ -72,7 +72,7 @@ wakeapp_enumer:
 добавить реализацию [EnumInterface](./Enum/EnumInterface.php).
 
 ```php
-<?php
+<?php declare(strict_types=1);
 
 namespace Acme\Enum;
 
