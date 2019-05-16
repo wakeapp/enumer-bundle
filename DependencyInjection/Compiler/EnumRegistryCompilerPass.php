@@ -21,6 +21,7 @@ use Wakeapp\Bundle\EnumerBundle\Enum\EnumInterface;
 use Wakeapp\Bundle\EnumerBundle\Registry\EnumRegistryService;
 use Wakeapp\Component\Enumer\EnumRegistry;
 use function get_declared_classes;
+use function is_subclass_of;
 
 class EnumRegistryCompilerPass implements CompilerPassInterface
 {

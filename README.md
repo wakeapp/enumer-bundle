@@ -7,11 +7,13 @@ Enumer Bundle
 Введение
 --------
 
-Бандл предоставляет возможность подключения компонента [Enumer](https://github.com/wakeapp/enumer).
-Предоставляет возможность использовать любой класс с константами в качесте `ENUM`.
+Бандл предоставляет возможность использовать любой класс с константами в качестве `ENUM`.
 
 Главной особенностью является уход от работы с рефлексией во время исполнения. Данная оптимизация достигается
 благодаря сбору всех данных о константах классов на этапе компиляции контейнера.
+
+Бандл поддерживает оптимизацию работы с `ENUM` при использовании
+[DoctrineBundle](https://github.com/doctrine/DoctrineBundle) - подробнее в разделе [Дополнительно](#дополнительно).
 
 Установка
 ---------
@@ -31,7 +33,7 @@ Enumer Bundle
 После включите бандл добавив его в список зарегистрированных бандлов в `app/AppKernel.php` файл вашего проекта:
 
 ```php
-<?php
+<?php declare(strict_types=1);
 // app/AppKernel.php
 
 class AppKernel extends Kernel
@@ -68,11 +70,11 @@ wakeapp_enumer:
 Использование
 -------------
 
-Чтобы зарегистрировать класс, содержащий константные значения, и использовать его в качесте `enum` - необходимо
+Чтобы зарегистрировать класс, содержащий константные значения, и использовать его в качестве `enum` - необходимо
 добавить реализацию [EnumInterface](./Enum/EnumInterface.php).
 
 ```php
-<?php
+<?php declare(strict_types=1);
 
 namespace Acme\Enum;
 
@@ -111,6 +113,21 @@ echo json_encode($normalizedList); // {"male":"Male","female":"Female"}
 $originalValue = $enumerRegistry->getOriginalValue(GenderEnum::class, 'FemALE'); 
 echo $originalValue; // 'Female'
 ```
+
+Дополнительно
+-------------
+
+### Использование ENUM в БД 
+
+Бандл предоставляет автоматическую интеграцию с компонентом [DbalEnumType](https://github.com/wakeapp/dbal-enum-type).
+Если вы ипользуете [DoctrineBundle](https://github.com/doctrine/DoctrineBundle) и работаете с типом `ENUM` в вашей БД 
+просто добавьте в зависимости [DbalEnumType](https://github.com/wakeapp/dbal-enum-type) 
+
+```bash
+composer require wakeapp/dbal-enum-type
+```
+
+Работа на уровне типов `Doctrine` также будет оптимизирована и не будет использовать рефлексию во время исполнения.
 
 Лицензия
 --------

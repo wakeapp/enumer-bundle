@@ -1,3 +1,9 @@
+## [Unreleased] minor
+### Added
+- Added integration with `wakeapp/dbal-enum-type` component.
+### Fixed
+- Fixed deprecation `symfony/config` since 4.2
+
 ## [1.0.0] - 2018-11-16
 ## Added
 - Added `EnumRegistryService` and appropriated service `wakeapp_enumer.enum_registry`.
