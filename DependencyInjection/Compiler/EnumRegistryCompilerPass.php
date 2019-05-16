@@ -17,9 +17,9 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Finder\Finder;
 use Wakeapp\Bundle\EnumerBundle\DependencyInjection\WakeappEnumerExtension;
-use Wakeapp\Bundle\EnumerBundle\Enum\EnumInterface;
 use Wakeapp\Bundle\EnumerBundle\Registry\EnumRegistryService;
 use Wakeapp\Component\Enumer\EnumRegistry;
+use Wakeapp\Psr\Enum\EnumInterface;
 use function get_declared_classes;
 use function is_subclass_of;
 
@@ -64,8 +64,7 @@ class EnumRegistryCompilerPass implements CompilerPassInterface
 
         $container
             ->getDefinition(EnumRegistryService::class)
-            ->replaceArgument(0, $enumList)
-        ;
+            ->replaceArgument(0, $enumList);
     }
 
     /**

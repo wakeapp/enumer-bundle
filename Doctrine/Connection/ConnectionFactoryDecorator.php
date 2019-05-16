@@ -10,10 +10,10 @@ use Doctrine\DBAL\Configuration;
 use Doctrine\DBAL\Connection;
 use Doctrine\DBAL\DBALException;
 use Doctrine\DBAL\Types\Type;
-use Wakeapp\Bundle\EnumerBundle\Enum\EnumInterface;
 use Wakeapp\Bundle\EnumerBundle\Registry\EnumRegistryService;
 use Wakeapp\Component\DbalEnumType\Type\AbstractEnumType;
 use Wakeapp\Component\Enumer\EnumRegistry;
+use Wakeapp\Psr\Enum\EnumInterface;
 use function is_subclass_of;
 
 class ConnectionFactoryDecorator

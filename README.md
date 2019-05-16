@@ -78,7 +78,7 @@ wakeapp_enumer:
 
 namespace Acme\Enum;
 
-use Wakeapp\Bundle\EnumerBundle\Enum\EnumInterface;
+use Wakeapp\Psr\Enum\EnumInterface;
 
 class GenderEnum implements EnumInterface
 {

@@ -11,7 +11,8 @@
         "symfony/dependency-injection": "~3.4||~4.0",
         "symfony/finder":               "~3.4||~4.0",
         "symfony/http-kernel":          "~3.4||~4.0",
-        "wakeapp/enumer":               "^1.0"
+        "wakeapp/enumer":               "^1.0",
+        "wakeapp/enum":                 "^1.0"
     },
 
     "suggest": {
