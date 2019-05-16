@@ -1,8 +1,8 @@
 {
     "name": "wakeapp/enumer-bundle",
-    "description": "Provides possibility for enum component",
+    "description": "Provides possibility for work with ENUM without reflection usage on the runtime",
     "type": "symfony-bundle",
-    "keywords": ["symfony-bundle", "enumer", "enum"],
+    "keywords": ["symfony-bundle", "enumer", "enum", "dbal-enum-type", "doctrine"],
     "license": "MIT",
 
     "require": {
@@ -12,6 +12,11 @@
         "symfony/finder":               "~3.4||~4.0",
         "symfony/http-kernel":          "~3.4||~4.0",
         "wakeapp/enumer":               "^1.0"
+    },
+
+    "suggest": {
+        "doctrine/doctrine-bundle": "Provides integration Doctrine with Symfony framework",
+        "wakeapp/dbal-enum-type": "Allows to working with Doctrine DBAL ENUM type"
     },
 
     "autoload": {

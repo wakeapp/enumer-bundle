@@ -15,6 +15,7 @@ namespace Wakeapp\Bundle\EnumerBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use function method_exists;
 
 class Configuration implements ConfigurationInterface
 {
@@ -23,8 +24,14 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('wakeapp_enumer');
+        $treeBuilder = new TreeBuilder('wakeapp_enumer');
+
+        if (method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            // BC layer for symfony/config 4.1 and older
+            $rootNode = $treeBuilder->root('wakeapp_enumer');
+        }
 
         $rootNode
             ->children()
