@@ -62,9 +62,11 @@ class AppKernel extends Kernel
 
 ```yaml
 wakeapp_enumer:
-    # список директорий, в которых будет происходить поиск классов, реализующий EnumInterface
+    # список директорий, в которых будет происходить поиск классов, реализующих EnumInterface
     source_directories:
         - 'src'
+    # список классов, которые следует зарегистрировать вне зависимости от реализации EnumInterface
+    source_classes: ~
 ``` 
 
 Использование
@@ -78,7 +80,7 @@ wakeapp_enumer:
 
 namespace Acme\Enum;
 
-use Wakeapp\Psr\Enum\EnumInterface;
+use Wakeapp\Bundle\EnumerBundle\Enum\EnumInterface;
 
 class GenderEnum implements EnumInterface
 {
@@ -116,6 +118,30 @@ echo $originalValue; // 'Female'
 
 Дополнительно
 -------------
+
+### Ручная регистрация класса с константами
+
+Допустим у нас есть класс из vendor, который содержит константы и нам необходимо его зарегистрировать.
+
+```php
+<?php declare(strict_types=1);
+
+namespace Vendor\Acme\Enum;
+
+class VendorGenderEnum
+{
+    const MALE = 'Male';
+    const FEMALE = 'Female';
+}
+```
+
+Чтобы зарегистрировать этот класс необходимо добавить его в массив `source_classes`:
+
+```yaml
+wakeapp_enumer:
+    source_classes:
+        - Vendor\Acme\Enum\VendorGenderEnum
+``` 
 
 ### Использование ENUM в БД 
 

@@ -2,7 +2,7 @@
     "name": "wakeapp/enumer-bundle",
     "description": "Provides possibility for work with ENUM without reflection usage on the runtime",
     "type": "symfony-bundle",
-    "keywords": ["symfony-bundle", "enumer", "enum", "dbal-enum-type", "doctrine"],
+    "keywords": ["symfony-bundle", "enumer", "enum", "doctrine-enum-type", "doctrine"],
     "license": "MIT",
 
     "require": {
@@ -11,8 +11,7 @@
         "symfony/dependency-injection": "~3.4||~4.0",
         "symfony/finder":               "~3.4||~4.0",
         "symfony/http-kernel":          "~3.4||~4.0",
-        "wakeapp/enumer":               "^1.0",
-        "wakeapp/psr-enum":             "^1.0"
+        "wakeapp/enumer":               "^1.0"
     },
 
     "suggest": {
