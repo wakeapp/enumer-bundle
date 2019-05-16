@@ -17,9 +17,10 @@ use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Finder\Finder;
 use Wakeapp\Bundle\EnumerBundle\DependencyInjection\WakeappEnumerExtension;
+use Wakeapp\Bundle\EnumerBundle\Enum\EnumInterface;
 use Wakeapp\Bundle\EnumerBundle\Registry\EnumRegistryService;
 use Wakeapp\Component\Enumer\EnumRegistry;
-use Wakeapp\Psr\Enum\EnumInterface;
+use function array_unique;
 use function get_declared_classes;
 use function is_subclass_of;
 
@@ -34,22 +35,12 @@ class EnumRegistryCompilerPass implements CompilerPassInterface
             return;
         }
 
-        $finder = $this->getFinder($container);
-
-        foreach ($finder as $splFileInfo) {
-            include_once($splFileInfo->getPathname());
-        }
+        $sourceClasses = $this->getSourceClassList($container);
 
         $enumList = [];
         $enumRegistry = new EnumRegistry();
 
-        $declaredClassList = get_declared_classes();
-
-        foreach ($declaredClassList as $className) {
-            if (!is_subclass_of($className, EnumInterface::class)) {
-                continue;
-            }
-
+        foreach ($sourceClasses as $className) {
             $enumRegistry->addEnum($className);
 
             $enumList[$className] = [
@@ -64,7 +55,36 @@ class EnumRegistryCompilerPass implements CompilerPassInterface
 
         $container
             ->getDefinition(EnumRegistryService::class)
-            ->replaceArgument(0, $enumList);
+            ->replaceArgument(0, $enumList)
+        ;
+    }
+
+    /**
+     * @param ContainerBuilder $container
+     *
+     * @return array
+     */
+    private function getSourceClassList(ContainerBuilder $container): array
+    {
+        $sourceClasses = $container->getParameter(WakeappEnumerExtension::PARAMETER_SOURCE_CLASSES);
+
+        $finder = $this->getFinder($container);
+
+        foreach ($finder as $splFileInfo) {
+            include_once($splFileInfo->getPathname());
+        }
+
+        $declaredClassList = get_declared_classes();
+
+        foreach ($declaredClassList as $className) {
+            if (!is_subclass_of($className, EnumInterface::class)) {
+                continue;
+            }
+
+            $sourceClasses[] = $className;
+        }
+
+        return array_unique($sourceClasses);
     }
 
     /**

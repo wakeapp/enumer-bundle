@@ -1,6 +1,9 @@
 ## [Unreleased] minor
 ### Added
 - Added integration with `wakeapp/dbal-enum-type` component.
+- Added possibility for register classes without `EnumerInterface` implementation.
+- Added configuration `wakeapp_enumer.source_classes`.
+- Added `EnumRegistryService::hasEnum` method.
 ### Fixed
 - Fixed deprecation `symfony/config` since 4.2
 

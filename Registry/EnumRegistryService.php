@@ -35,6 +35,16 @@ class EnumRegistryService
     /**
      * @param string $enumClass
      *
+     * @return bool
+     */
+    public function hasEnum(string $enumClass): bool
+    {
+        return isset($this->enumList[$enumClass]);
+    }
+
+    /**
+     * @param string $enumClass
+     *
      * @return array
      */
     public function getOriginalList(string $enumClass): array

@@ -23,16 +23,20 @@ use function class_exists;
 class WakeappEnumerExtension extends Extension implements PrependExtensionInterface
 {
     public const PARAMETER_SOURCES = 'wakeapp_enumer.source_directories';
+    public const PARAMETER_SOURCE_CLASSES = 'wakeapp_enumer.source_classes';
 
     /**
      * {@inheritdoc}
      */
     public function load(array $configs, ContainerBuilder $container): void
     {
-        $configuration = new Configuration();
+        $projectDir = $container->getParameter('kernel.project_dir');
+
+        $configuration = new Configuration($projectDir);
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter(self::PARAMETER_SOURCES, $config['source_directories'] ?? []);
+        $container->setParameter(self::PARAMETER_SOURCE_CLASSES, $config['source_classes'] ?? []);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yaml');

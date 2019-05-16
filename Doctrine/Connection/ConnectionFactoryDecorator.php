@@ -13,8 +13,6 @@ use Doctrine\DBAL\Types\Type;
 use Wakeapp\Bundle\EnumerBundle\Registry\EnumRegistryService;
 use Wakeapp\Component\DbalEnumType\Type\AbstractEnumType;
 use Wakeapp\Component\Enumer\EnumRegistry;
-use Wakeapp\Psr\Enum\EnumInterface;
-use function is_subclass_of;
 
 class ConnectionFactoryDecorator
 {
@@ -65,11 +63,9 @@ class ConnectionFactoryDecorator
 
             $enumClass = $type::getEnumClass();
 
-            if (!is_subclass_of($enumClass, EnumInterface::class)) {
-                continue;
+            if ($this->enumRegistry->hasEnum($enumClass)) {
+                $type::setValues($this->enumRegistry->getOriginalList($enumClass));
             }
-
-            $type::setValues($this->enumRegistry->getOriginalList($enumClass));
         }
 
         return $connection;
