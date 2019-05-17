@@ -14,11 +14,6 @@
         "wakeapp/enumer":               "^1.0"
     },
 
-    "suggest": {
-        "doctrine/doctrine-bundle": "Provides integration Doctrine with Symfony framework",
-        "wakeapp/dbal-enum-type": "Allows to working with Doctrine DBAL ENUM type"
-    },
-
     "autoload": {
         "psr-4": {
             "Wakeapp\\Bundle\\EnumerBundle\\": ""

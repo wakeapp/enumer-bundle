@@ -12,9 +12,6 @@ Enumer Bundle
 Главной особенностью является уход от работы с рефлексией во время исполнения. Данная оптимизация достигается
 благодаря сбору всех данных о константах классов на этапе компиляции контейнера.
 
-Бандл поддерживает оптимизацию работы с `ENUM` при использовании
-[DoctrineBundle](https://github.com/doctrine/DoctrineBundle) - подробнее в разделе [Дополнительно](#дополнительно).
-
 Установка
 ---------
 
@@ -142,18 +139,6 @@ wakeapp_enumer:
     source_classes:
         - Vendor\Acme\Enum\VendorGenderEnum
 ``` 
-
-### Использование ENUM в БД 
-
-Бандл предоставляет автоматическую интеграцию с компонентом [DbalEnumType](https://github.com/wakeapp/dbal-enum-type).
-Если вы ипользуете [DoctrineBundle](https://github.com/doctrine/DoctrineBundle) и работаете с типом `ENUM` в вашей БД 
-просто добавьте в зависимости [DbalEnumType](https://github.com/wakeapp/dbal-enum-type) 
-
-```bash
-composer require wakeapp/dbal-enum-type
-```
-
-Работа на уровне типов `Doctrine` также будет оптимизирована и не будет использовать рефлексию во время исполнения.
 
 Лицензия
 --------

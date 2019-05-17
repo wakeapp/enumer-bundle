@@ -1,6 +1,5 @@
-## [Unreleased] minor
+## [1.1.0] - 2019-05-17
 ### Added
-- Added integration with `wakeapp/dbal-enum-type` component.
 - Added possibility for register classes without `EnumerInterface` implementation.
 - Added configuration `wakeapp_enumer.source_classes`.
 - Added `EnumRegistryService::hasEnum` method.

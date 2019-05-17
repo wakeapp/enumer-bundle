@@ -99,6 +99,10 @@ class Configuration implements ConfigurationInterface
     private function validationForSourceClasses(): Closure
     {
         return function (?array $classes) {
+            if ($classes === null) {
+                return $classes;
+            }
+
             foreach ($classes as $class) {
                 if (!class_exists($class)) {
                     throw new InvalidConfigurationException(sprintf(
