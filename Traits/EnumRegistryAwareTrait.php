@@ -23,7 +23,7 @@ trait EnumRegistryAwareTrait
     protected $enumer;
 
     /**
-     * @require
+     * @required
      *
      * @param EnumRegistryService $enumer
      */

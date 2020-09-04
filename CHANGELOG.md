@@ -1,3 +1,7 @@
+## [1.1.1] - 2020-09-04
+### Fixed
+- Fixed `required` annotation
+
 ## [1.1.0] - 2019-05-17
 ### Added
 - Added possibility for register classes without `EnumerInterface` implementation.
