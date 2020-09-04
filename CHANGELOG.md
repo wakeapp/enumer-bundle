@@ -1,4 +1,4 @@
-## [UNRELEASED]
+## [1.1.1] - 2020-09-04
 ### Fixed
 - Fixed `required` annotation
 
