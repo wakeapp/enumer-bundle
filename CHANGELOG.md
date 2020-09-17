@@ -1,3 +1,7 @@
+## [1.2.0] - 2020-09-17
+### Added
+- Added support Symfony ~5.0
+
 ## [1.1.1] - 2020-09-04
 ### Fixed
 - Fixed `required` annotation
