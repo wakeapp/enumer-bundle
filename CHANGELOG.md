@@ -1,3 +1,7 @@
+## [Unreleased]
+### Added
+- Support PHP ~8.0.
+
 ## [1.2.0] - 2020-09-17
 ### Added
 - Added support Symfony ~5.0
