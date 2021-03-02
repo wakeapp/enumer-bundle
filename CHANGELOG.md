@@ -1,4 +1,6 @@
 ## [Unreleased]
+
+## [1.2.1]
 ### Added
 - Support PHP ~8.0.
 
